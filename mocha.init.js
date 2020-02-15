@@ -12,7 +12,7 @@ let isDone = false
 before(function (done) {
   clearMongooseCollections()
 
-  this.timeout(30000)
+  this.timeout(8000)
 
   console.warn('[Serverless Offline Initialization] Start')
 
@@ -52,7 +52,7 @@ async function clearCollections() {
   const promises = []
 
   for (var collection in mongoose.connection.collections) {
-    const promise = mongoose.connection.collections[collection].remove()
+    const promise = mongoose.connection.collections[collection].deleteOne()
 
     promises.push(promise)
   }

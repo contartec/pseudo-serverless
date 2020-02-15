@@ -2,7 +2,7 @@
 
 require('module-alias/register')
 
-const WorldTibiaDataAPIService = require('worlds/services/WorldTibiaDataAPIService')
+const WorldSaveService = require('worlds/services/WorldSaveService')
 
 /**
  * @apiName getNearest
@@ -26,12 +26,12 @@ const WorldTibiaDataAPIService = require('worlds/services/WorldTibiaDataAPIServi
 */
 const main = async event => {
   try {
-    console.warn('[saveWorlds] init')
+    console.warn(`[saveWorlds] ${new Date()} init`)
 
-    const worlds = await WorldTibiaDataAPIService
-      .getWorlds()
+    const worlds = await WorldSaveService
+      .sync()
 
-    console.warn(`[saveWorlds] finish ${worlds.length}`)
+    console.warn(`[saveWorlds] ${new Date()} finish ${worlds.length}`)
 
     return ({
       worlds

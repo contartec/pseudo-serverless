@@ -7,7 +7,7 @@ const { expect } = require('chai')
 
 const WorldMock = require('worlds/tests/mocks/models/WorldMock')
 
-const RequestMock = require('libs/requestMock/RequestMock')
+const RequestMock = require('libs/mocks/RequestMock')
 
 chai
   .use(require('chai-http'))

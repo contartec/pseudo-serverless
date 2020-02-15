@@ -6,13 +6,13 @@ Logo ao acessar o site (tendo vc feito isso ou não), independente da aparência
 
 ## Back
 
-Utilizando o [projeto em serverless](https://github.com/contartec/pseudo-serverless) (e se baseando no código existente caso queira ou não), vc deverá utilizar a API do serviço [_TibiaData API_](https://tibiadata.com/) para buscar as informações necessárias de acordo com as funcionalidades.
+Utilizando o [projeto em serverless](https://github.com/contartec/pseudo-serverless) (e se baseando no [código existente](https://github.com/contartec/pseudo-serverless) caso queira ou não), vc deverá utilizar a API do serviço [_TibiaData API_](https://tibiadata.com/) para buscar as informações necessárias de acordo com as funcionalidades.
 
 Além disso,
 
 Requerimentos:
 
-- [Serverless framework](https://serverless.com) utilizando [`serverless-offline`](https://www.npmjs.com/package/serverless-offline) e [`serverless-offline-scheduler`](https://www.npmjs.com/package/serverless-offline-scheduler) (como já configurado no projeto base) para integração com o front
+- [Serverless framework](https://serverless.com) utilizando [`serverless-offline`](https://www.npmjs.com/package/serverless-offline) e [`serverless-offline-scheduler`](https://www.npmjs.com/package/serverless-offline-scheduler) (já configurados no projeto base) para integração com o front.
 
 Será levado em conta:
 
@@ -58,12 +58,14 @@ Qualquer template/_inspiração_/criatividade pode ser usada na interface.
 
 ### Mundos ([Worlds](https://www.tibia.com/community/?subtopic=worlds))
 
+https://tibiadata.com/doc-api-v2/worlds/
+
 #### Funcionalidades esperadas:
 
 - Listagem (ordem alfabética por padrão)
 - Busca
 - Visualização dos detalhes
-- Rotina agendada (vulgo cronjob) que salva os `Mundos` ainda não persistidos nos banco (a cada `15min`)
+- ~~Rotina agendada (vulgo [schedule](https://serverless.com/framework/docs/providers/aws/events/schedule/)) que sincroniza os `Mundos` vindos da API no banco `a cada hora`~~ (_Já implementada_)
 
 #### Atributos (e comportamentos de exibição)
 
@@ -72,22 +74,20 @@ Qualquer template/_inspiração_/criatividade pode ser usada na interface.
 - Local do servidor
 - Tipo do PvP
 - Total de players online
-  * Exibir de forma distinta os valores: `<= 20`, `< 100`, `< 190`, `< 240`, `<= 299` e `> 300`.
 - Total máximo registrado de players online (e data)
-  * Exibir de forma distinta os valores: `<= 500`, `<= 650`, `<= 730`, `<= 799`, `< 999` e `>= 1000`.
 - Sistema `BattleEye`
   * Este mundo possui ou não sistema `BattleEye`?
 - Transferência (`transfer_type`)
   * Este mundo permite ou não transferências?
-- Top XP ([Highscores](https://www.tibia.com/community/?subtopic=highscores))
-  * `Nome` e `LVL` do personagem com maior xp (`experience`)
 
 
 ### Personagens ([Characters](https://www.tibia.com/community/?subtopic=characters))
 
+https://tibiadata.com/doc-api-v2/characters/
+
 #### Funcionalidades esperadas:
 
-- Busca
+- Busca por nome
 - Visualização dos detalhes
 
 #### Atributos (e comportamentos de exibição)
@@ -100,34 +100,23 @@ Qualquer template/_inspiração_/criatividade pode ser usada na interface.
 - Mundo
   * `Nome`, `Tipo do PvP` e `Total de players online`
 - Tipo da conta (`account_status`)
-  * Diferenciar entre `free` e `premium`
 - Nome da guild
 - Status
-- Mortes
-  * `LVL`, data e motivo
-- Outros personagens
-  * `Nome`, `mundo (nome)` e `status`
 
-> Adiantando alguns random: `Mentally Muted`, `Estaagiaaria`, `Mano Heal` e `Druid da Medicina`.
+> Pseudo-random users: `Mentally Muted`, `Estaagiaaria`, `Mano Heal` e `Druid da Medicina`.
 
 
 ### Top players ([Highscores](https://www.tibia.com/community/?subtopic=highscores))
 
+https://tibiadata.com/doc-api-v2/highscores/
+
 #### Funcionalidades esperadas (`backend` only)
 
-- Rotina agendada (vulgo cronjob) que salva os _20 primeiros jogadores_ de _cada tipo de ranking_ (de todos os `Mundos`) no banco (a cada `20min`)
+- Rotina agendada (vulgo [schedule](https://serverless.com/framework/docs/providers/aws/events/schedule/)) que salva os _20 primeiros jogadores_ do _ranking do tipo `experience`_ de todos os `Mundos` (persistidos no banco) a cada `20min`
 
 #### Atributos
 
-- Dados (completos) do personagem
+- Dados do personagem
 - Posição no ranking
 - Tipo do ranking
-- "Valor" (obviamente usado no rank)
-- Posição _anterior_ no ranking
-
-
-## Da entrega
-
-Todos aqui vivemos no mundo real, logo, não há prazo de conclusão do desafio, apenas pedimos que nos informe no dia que começar.
-
-Quando estiver pronto para entrega (depois de nos avisar), adicione contartec@kajoo.com.br para acesso ao respositório (sim, sendo Git) do projeto.
+- Level

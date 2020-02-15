@@ -17,6 +17,23 @@ const ENDPOINT = {
 class WorldTibiaDataAPIService {
 
   /**
+   * Returns the `worlds` info
+   * @async
+   * 
+   * @return {Object} The `worlds` info
+   * 
+   * @see {@link https://tibiadata.com/doc-api-v2/worlds/}
+  */
+  static async getWorlds() {
+    const response = await this._sendRequest(ENDPOINT.WORLDS)
+
+    const worlds = response && response.body ?
+      response.body : null
+
+    return worlds
+  }
+
+  /**
    * Returns the list of `worlds`
    * @async
    * 
@@ -24,15 +41,13 @@ class WorldTibiaDataAPIService {
    * 
    * @see {@link https://tibiadata.com/doc-api-v2/worlds/}
   */
-  static async getWorlds() {
-    let worlds = null
+  static async getWorldsList() {
+    const worlds = await this.getWorlds()
 
-    const response = await this._sendRequest(ENDPOINT.WORLDS)
+    const worldsList = worlds && worlds.worlds ?
+      worlds.worlds.allworlds : []
 
-    if (response && response.body)
-      worlds = response.body
-
-    return worlds
+    return worldsList
   }
 
   /**

@@ -18,7 +18,7 @@ const SCHEMA = {
     ...STRING_REQUIRED,
     unique: true
   },
-  creation_date       : STRING_REQUIRED,
+  creation_date       : String,
   location            : STRING_REQUIRED,
   pvp_type            : STRING_REQUIRED,
   world_quest_titles  : String,

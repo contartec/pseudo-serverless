@@ -33,7 +33,7 @@ functions:
   saveWorlds:
     handler: worlds/functions/saveWorlds.main
     events:
-      - schedule: rate(20 minutes)
+      - schedule: cron(* */1 * * *)
 
 plugins:
 - serverless-offline
