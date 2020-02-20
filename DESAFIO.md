@@ -76,35 +76,9 @@ https://tibiadata.com/doc-api-v2/worlds/
 - Total de players online
 - Total máximo registrado de players online (e data)
 - Sistema `BattleEye`
-  * Este mundo possui ou não sistema `BattleEye`?
+  * Possui sistema `BattleEye`?
 - Transferência (`transfer_type`)
-  * Este mundo permite ou não transferências?
-
-
-### Personagens ([Characters](https://www.tibia.com/community/?subtopic=characters))
-
-https://tibiadata.com/doc-api-v2/characters/
-
-#### Funcionalidades esperadas:
-
-- Busca por nome
-- Visualização dos detalhes
-
-#### Atributos (e comportamentos de exibição)
-
-- Nome
-- LVL
-- Vocação
-- Sexo
-- Data de criação
-- Mundo
-  * `Nome`, `Tipo do PvP` e `Total de players online`
-- Tipo da conta (`account_status`)
-- Nome da guild
-- Status
-
-> Pseudo-random users: `Mentally Muted`, `Estaagiaaria`, `Mano Heal` e `Druid da Medicina`.
-
+  * Permite transferências?
 
 ### Top players ([Highscores](https://www.tibia.com/community/?subtopic=highscores))
 
